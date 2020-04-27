@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import { View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
+Icon.loadFont();
 
 import header from './styles';
-Icon.loadFont();
 
 export default class Header extends Component {
   render() {

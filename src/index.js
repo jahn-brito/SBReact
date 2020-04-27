@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 import Header from "./components/Header"
+import CardItem from "./components/CardItem"
 
 
 export default class App extends Component {
@@ -25,7 +26,12 @@ export default class App extends Component {
       <Fragment>
         <StatusBar barStyle="light-content"/>
         <Header></Header>
-        <Text>Hello</Text>
+        <ScrollView>
+          <CardItem></CardItem>
+          <CardItem></CardItem>
+          <CardItem></CardItem>
+          <CardItem></CardItem>
+        </ScrollView>
       </Fragment>
     )
   }
