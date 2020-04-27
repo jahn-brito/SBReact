@@ -18,6 +18,7 @@ import {
 
 import Header from "./components/Header"
 import CardItem from "./components/CardItem"
+import Student from "./components/Student"
 
 
 export default class App extends Component {
@@ -26,8 +27,19 @@ export default class App extends Component {
       <Fragment>
         <StatusBar barStyle="light-content"/>
         <Header></Header>
+        <Student></Student>
         <ScrollView>
+        <Text style={{
+          alignSelf: 'center',
+          fontWeight: '600'
+        }}>
+          27 de Abril de 2020
+        </Text>
+          <Text style={styles.title}>Comunicados</Text>
           <CardItem></CardItem>
+          <CardItem></CardItem>
+          <CardItem></CardItem>
+          <Text style={styles.title}>Tarefas</Text>
           <CardItem></CardItem>
           <CardItem></CardItem>
           <CardItem></CardItem>
@@ -38,5 +50,10 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  
+  title: {
+    marginLeft: 10,
+    paddingVertical: 10,
+    fontSize: 16,
+    fontWeight: '500'
+  }
 });
