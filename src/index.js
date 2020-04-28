@@ -1,13 +1,14 @@
 import React, {Component, Fragment} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
-  View,
   Text,
   StatusBar,
 } from 'react-native';
 import Modal from 'react-native-modal';
+import moment from 'moment'
+import 'moment/locale/pt-br';
+moment.locale('pt-BR');
 
 import Header from "./components/Header"
 import CardItem from "./components/CardItem"
@@ -35,7 +36,7 @@ export default class App extends Component {
           alignSelf: 'center',
           fontWeight: '600'
         }}>
-          27 de Abril de 2020
+          {moment().format('LL')}
         </Text>
           <Text style={styles.title}>Comunicados</Text>
           <CardItem toogle={this.toggleModal}></CardItem>

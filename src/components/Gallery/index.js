@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { getInputRangeFromIndexes } from 'react-native-snap-carousel';
 
 import { View, Text, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
 
@@ -47,13 +47,58 @@ export default class Gallery extends Component {
     }
   }
 
+  _scrollInterpolator (index, carouselProps) {
+    const range = [3, 2, 1, 0, -1];
+    const inputRange =  getInputRangeFromIndexes(range, index, carouselProps);
+    const outputRange = range;
+
+    return { inputRange, outputRange };
+  }
+
+  _animatedStyles (index, animatedValue, carouselProps) {
+    const sizeRef = carouselProps.vertical ? carouselProps.itemHeight : carouselProps.itemWidth;
+    const translateProp = carouselProps.vertical ? 'translateY' : 'translateX';
+
+    return {
+      zIndex: carouselProps.data.length - index,
+      opacity: animatedValue.interpolate({
+        inputRange: [2,3],
+        outputRange: [1,0]
+      }),
+      transform: [{
+        rotate: animatedValue.interpolate({
+          inputRange: [-1, 0, 1, 2, 3],
+          outputRange: ['-25deg', '0deg', '-3deg', '1.8deg', '0deg'],
+          extrapolate: 'clamp'
+        })
+      }, {
+        [translateProp]: animatedValue.interpolate({
+          inputRange: [-1, 0, 1, 2, 3],
+          outputRange: [
+            -sizeRef * 0.5,
+            0,
+            -sizeRef,
+            -sizeRef * 2,
+            -sizeRef * 3
+          ],
+          extrapolate: 'clamp'
+        })
+      }]
+    }
+  }
+
   _renderItem({ item, index }) {
     return (
       <ImageBackground
         source={{ uri: item.illustration }}
         style={{
           height: 200,
-          padding: 5
+          padding: 5,
+          shadowColor: 'white',
+          shadowOffset: { width: 0, height: 1 },
+          shadowOpacity: 1,
+          shadowRadius: 1,
+          elevation: 1,
         }}
       >
         <Text
@@ -81,7 +126,11 @@ export default class Gallery extends Component {
           sliderWidth={300}
           itemWidth={300}
           renderItem={this._renderItem}
-          onSnapToItem={index => this.setState({ activeIndex: index })} />
+          onSnapToItem={index => this.setState({ activeIndex: index })}
+          scrollInterpolator={this._scrollInterpolator}
+          slideInterpolatedStyle={this._animatedStyles}
+          useScrollView={true}
+          />
       </SafeAreaView>
     );
   }
@@ -92,7 +141,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginVertical: 10,
-    // borderColor: 'red',
-    // borderWidth: 1
+    height: 230
   }
 });
