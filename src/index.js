@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: undefined,
     backgroundColor: 'white',
     margin: 0,
-    marginTop: 40
+    marginTop: 100
   }
 });
 

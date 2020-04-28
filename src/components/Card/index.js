@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { View, ImageBackground, TouchableOpacity, Text, ScrollView } from 'react-native';
+import YouTube from 'react-native-youtube'
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
@@ -12,7 +13,12 @@ export default class Card extends Component {
     return (
       <ScrollView>
         <View>
-          <ImageBackground source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }} style={{ height: 200 }}>
+          <ImageBackground
+            source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }}
+            style={{
+              height: 200,
+            }}
+          >
             <View
               style={styles.container}
             >
@@ -45,6 +51,17 @@ export default class Card extends Component {
         {/* Vídeo do YT */}
         <View style={styles.attemptsContainer}>
           <Gallery />
+        </View>
+
+        <View style={styles.videoContainer}>
+        <YouTube
+          videoId='Ezn00_YrXh8'
+          play={false}
+          apiKey={'wZpPI25c98z7-j7zFOLNz1U8'}
+          fullscreen={true}
+          loop={false}
+          onReady={e => this.setState({ isReady: true })}
+          style={styles.video}/>
         </View>
 
         <View style={styles.senderContainer}>

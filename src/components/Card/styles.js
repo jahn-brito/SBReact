@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: 'center',
-    margin: 10
+    margin: 10,
   },
   titleContainer:{
     margin: 10
@@ -25,6 +25,16 @@ const styles = StyleSheet.create({
   },
   attemptsContainer: {
     margin: 10
+  },
+  videoContainer: {
+    marginHorizontal: 3
+  },
+  video: {
+    width: Dimensions.get('screen').width - 15,
+    alignSelf: 'stretch',
+    height: 230,
+    marginLeft: 3,
+    marginTop: 3,
   }
 });
 

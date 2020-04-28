@@ -1,146 +1,136 @@
 import React, { Component } from 'react';
-import Carousel, { getInputRangeFromIndexes } from 'react-native-snap-carousel';
 
-import { View, Text, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
-
-// import { Container } from './styles';
-
-const ENTRIES1 = [
-  {
-    title: 'Beautiful and dramatic Antelope Canyon',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/UYiroysl.jpg'
-  },
-  {
-    title: 'Earlier this morning, NYC',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/UPrs1EWl.jpg'
-  },
-  {
-    title: 'White Pocket Sunset',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-    illustration: 'https://i.imgur.com/MABUbpDl.jpg'
-  },
-  {
-    title: 'Acrocorinth, Greece',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/KZsmUi2l.jpg'
-  },
-  {
-    title: 'The lone tree, majestic landscape of New Zealand',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg'
-  },
-  {
-    title: 'Middle Earth, Germany',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/lceHsT6l.jpg'
-  }
-];
+import { View, Text, StyleSheet, Modal, FlatList, TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 export default class Gallery extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 0
+      imageuri: '',
+      modalVisible: false
     }
   }
 
-  _scrollInterpolator (index, carouselProps) {
-    const range = [3, 2, 1, 0, -1];
-    const inputRange =  getInputRangeFromIndexes(range, index, carouselProps);
-    const outputRange = range;
-
-    return { inputRange, outputRange };
+  showModal(visible, imageURL) {
+    this.setState({
+      modalVisible: visible,
+      imageuri: imageURL
+    })
   }
 
-  _animatedStyles (index, animatedValue, carouselProps) {
-    const sizeRef = carouselProps.vertical ? carouselProps.itemHeight : carouselProps.itemWidth;
-    const translateProp = carouselProps.vertical ? 'translateY' : 'translateX';
+  componentDidMount(){
+    var that = this;
+    let items = Array.apply(null, Array(8)).map((v, i) => {
+      return { id: i, src: 'https://unsplash.it/400/400?image=' + (i + 10)};
+    });
 
-    return {
-      zIndex: carouselProps.data.length - index,
-      opacity: animatedValue.interpolate({
-        inputRange: [2,3],
-        outputRange: [1,0]
-      }),
-      transform: [{
-        rotate: animatedValue.interpolate({
-          inputRange: [-1, 0, 1, 2, 3],
-          outputRange: ['-25deg', '0deg', '-3deg', '1.8deg', '0deg'],
-          extrapolate: 'clamp'
-        })
-      }, {
-        [translateProp]: animatedValue.interpolate({
-          inputRange: [-1, 0, 1, 2, 3],
-          outputRange: [
-            -sizeRef * 0.5,
-            0,
-            -sizeRef,
-            -sizeRef * 2,
-            -sizeRef * 3
-          ],
-          extrapolate: 'clamp'
-        })
-      }]
-    }
+    that.setState({
+      dataSource: items,
+    });
   }
-
-  _renderItem({ item, index }) {
-    return (
-      <ImageBackground
-        source={{ uri: item.illustration }}
-        style={{
-          height: 200,
-          padding: 5,
-          shadowColor: 'white',
-          shadowOffset: { width: 0, height: 1 },
-          shadowOpacity: 1,
-          shadowRadius: 1,
-          elevation: 1,
-        }}
-      >
-        <Text
-          style={{
-            color: '#FFF',
-            shadowColor: 'grey',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 1,
-            shadowRadius: 2,
-            elevation: 2,
-            fontWeight: '600'
-          }}
-        >{item.title}</Text>
-      </ImageBackground>
-    )
-  };
 
   render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Carousel
-          layout={"default"}
-          ref={ref => this.carousel = ref}
-          data={ENTRIES1}
-          sliderWidth={300}
-          itemWidth={300}
-          renderItem={this._renderItem}
-          onSnapToItem={index => this.setState({ activeIndex: index })}
-          scrollInterpolator={this._scrollInterpolator}
-          slideInterpolatedStyle={this._animatedStyles}
-          useScrollView={true}
+    if (this.state.modalVisible) {
+      return (
+        <Modal
+          transparent={false}
+          animationType={'slide'}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            this.showModal(!this.state.modalVisible, '');
+          }}>
+          <View style={styles.modelStyle}>
+            <FastImage
+              style={styles.fullImageStyle}
+              source={{ uri: this.state.imageuri }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+            <TouchableOpacity
+              activeOpacity={0.5}
+              style={styles.closeButtonStyle}
+              onPress={() => {
+                this.showModal(!this.state.modalVisible, '');
+              }}>
+              <FastImage
+                source={{
+                  uri:
+                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/close.png',
+                }}
+                style={{ width: 35, height: 35, marginTop: 16 }}
+              />
+            </TouchableOpacity>
+          </View>
+        </Modal>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text
+            style={{
+              padding: 10,
+              fontSize: 16,
+              fontWeight: '600'
+            }}>
+            Imagens
+          </Text>
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={({ item }) => (
+              <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
+                <TouchableOpacity
+                  key={item.id}
+                  style={{ flex: 1 }}
+                  onPress={() => {
+                    this.showModal(true, item.src);
+                  }}>
+                  <FastImage
+                    style={styles.image}
+                    source={{
+                      uri: item.src,
+                    }}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={3}
+            keyExtractor={(item, index) => index.toString()}
           />
-      </SafeAreaView>
-    );
+        </View>
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 10,
+  },
+  image: {
+    height: 120,
+    width: '100%',
+  },
+  fullImageStyle: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 10,
-    height: 230
-  }
+    height: '100%',
+    width: '98%',
+    resizeMode: 'contain',
+  },
+  modelStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  closeButtonStyle: {
+    width: 25,
+    height: 25,
+    top: 9,
+    right: 9,
+    position: 'absolute',
+  },
 });
