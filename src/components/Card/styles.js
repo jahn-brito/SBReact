@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   },
   senderContainer:{
     margin: 10
+  },
+  attemptsContainer: {
+    margin: 10
   }
 });
 

@@ -9,7 +9,7 @@ export default class CardItem extends Component {
   render() {
     return (
       <View style={card.container}>
-          <TouchableOpacity style={card.content}>
+          <TouchableOpacity style={card.content} onPress={() => this.props.toogle()}>
               <View style={card.rowHeader}>
                 <View style={card.containerAvatar}>
                   <Image source={{uri: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png'}} style={{width: 40, height: 40}} />

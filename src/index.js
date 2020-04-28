@@ -25,7 +25,7 @@ import Card from "./components/Card"
 
 export default class App extends Component {
   state = {
-    isModalVisible: true,
+    isModalVisible: false,
   };
 
   toggleModal = () => {
@@ -45,15 +45,15 @@ export default class App extends Component {
           27 de Abril de 2020
         </Text>
           <Text style={styles.title}>Comunicados</Text>
-          <CardItem></CardItem>
-          <CardItem></CardItem>
-          <CardItem></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
           <Text style={styles.title}>Tarefas</Text>
           <CardItem></CardItem>
           <CardItem></CardItem>
           <CardItem></CardItem>
           <Modal isVisible={this.state.isModalVisible} style={styles.modal} propagateSwipe>
-            <Card></Card>
+            <Card modalVisible={this.state.isModalVisible} toogle={this.toggleModal}></Card>
           </Modal>
         </ScrollView>
       </Fragment>
