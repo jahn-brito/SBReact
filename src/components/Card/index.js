@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
 import styles from './styles';
+import Gallery from '../Gallery';
 
 export default class Card extends Component {
   render() {
@@ -41,15 +42,9 @@ export default class Card extends Component {
           </Text>
         </View>
 
-        {/* Anexos */}
-        <View style={styles.attemptsContainer}>
-          <Text>Anexos</Text>
-        </View>
-
-
         {/* Vídeo do YT */}
         <View style={styles.attemptsContainer}>
-          <Text>Vídeos</Text>
+          <Gallery />
         </View>
 
         <View style={styles.senderContainer}>

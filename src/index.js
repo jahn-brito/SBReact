@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, {Component, Fragment} from 'react';
 import {
   SafeAreaView,
@@ -50,9 +42,9 @@ export default class App extends Component {
           <CardItem toogle={this.toggleModal}></CardItem>
           <CardItem toogle={this.toggleModal}></CardItem>
           <Text style={styles.title}>Tarefas</Text>
-          <CardItem></CardItem>
-          <CardItem></CardItem>
-          <CardItem></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
+          <CardItem toogle={this.toggleModal}></CardItem>
           <Modal isVisible={this.state.isModalVisible} style={styles.modal} propagateSwipe>
             <Card modalVisible={this.state.isModalVisible} toogle={this.toggleModal}></Card>
           </Modal>
