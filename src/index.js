@@ -21,6 +21,7 @@ import Header from "./components/Header"
 import CardItem from "./components/CardItem"
 import Student from "./components/Student"
 import Card from "./components/Card"
+import Footer from './components/Footer';
 
 
 export default class App extends Component {
@@ -56,6 +57,7 @@ export default class App extends Component {
             <Card modalVisible={this.state.isModalVisible} toogle={this.toggleModal}></Card>
           </Modal>
         </ScrollView>
+        <Footer />
       </Fragment>
     )
   }
