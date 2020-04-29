@@ -15,6 +15,11 @@ export default class Footer extends Component {
       modalVisible: false
     }
   }
+
+  toggleModal = () => {
+    this.setState({modalVisible: !this.state.modalVisible});
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -35,8 +40,8 @@ export default class Footer extends Component {
         <TouchableOpacity>
           <Icon name="plus" size={25} />
         </TouchableOpacity>
-        <Modal style={styles.modal} isVisible={this.state.modalVisible} onBackdropPress={() => this.setState({ modalVisible: !this.state.modalVisible })}>
-          <Notifications />
+        <Modal style={styles.modal} isVisible={this.state.modalVisible} onBackdropPress={() => this.toggleModal}>
+          <Notifications toogle={this.toggleModal} />
         </Modal>
       </View>
     );
@@ -64,6 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     margin: 0,
     marginTop: 100,
+    paddingBottom: 50,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20
   }

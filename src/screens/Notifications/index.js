@@ -39,6 +39,102 @@ const DATA = [
     avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
     date: 'png'
   },
+  {
+    id: '5',
+    title: 'Novo Comunicado',
+    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '6',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '7',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '8',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '9',
+    title: 'Novo Comunicado',
+    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '10',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '11',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '12',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '13',
+    title: 'Novo Comunicado',
+    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '14',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '15',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
+  {
+    id: '16',
+    title: 'Novo Comunicado',
+    body: 'Tem um novo comunicado que você precisa ver.',
+    author: 'Jon',
+    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    date: 'png'
+  },
 ]
 
 export default class Notifications extends Component {
@@ -82,7 +178,7 @@ export default class Notifications extends Component {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Notificações</Text>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} onPress={this.props.toogle}>
             <Icon name='angle-down' size={25} style={styles.headerIcon} />
           </TouchableOpacity>
         </View>
