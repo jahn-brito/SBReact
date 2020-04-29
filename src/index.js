@@ -4,6 +4,7 @@ import {
   ScrollView,
   Text,
   StatusBar,
+  YellowBox
 } from 'react-native';
 import Modal from 'react-native-modal';
 import moment from 'moment'
@@ -16,6 +17,9 @@ import Student from "./components/Student"
 import Card from "./components/Card"
 import Footer from './components/Footer';
 
+YellowBox.ignoreWarnings([
+  'VirtualizedLists should never be nested', // TODO: Remove when fixed
+])
 
 export default class App extends Component {
   state = {
@@ -46,7 +50,11 @@ export default class App extends Component {
           <CardItem toogle={this.toggleModal}></CardItem>
           <CardItem toogle={this.toggleModal}></CardItem>
           <CardItem toogle={this.toggleModal}></CardItem>
-          <Modal isVisible={this.state.isModalVisible} style={styles.modal} propagateSwipe>
+          <Modal
+            isVisible={this.state.isModalVisible}
+            style={styles.modal}
+            propagateSwipe
+          >
             <Card modalVisible={this.state.isModalVisible} toogle={this.toggleModal}></Card>
           </Modal>
         </ScrollView>
@@ -66,9 +74,9 @@ const styles = StyleSheet.create({
   modal: {
     alignItems: undefined,
     justifyContent: undefined,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     margin: 0,
-    marginTop: 100
+    marginTop: 100,
   }
 });
 

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   titleContainer:{
-    margin: 10
+    margin: 10,
   },
   titleContent: {
     fontWeight: '600',

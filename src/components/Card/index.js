@@ -7,17 +7,24 @@ Icon.loadFont();
 
 import styles from './styles';
 import Gallery from '../Gallery';
+import Attachments from '../Attachments';
 
 export default class Card extends Component {
   render() {
     return (
-      <ScrollView>
-        <View>
+      <ScrollView >
+        <View
+          style={{
+            height: 200,
+          }}
+        >
           <ImageBackground
             source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }}
             style={{
-              height: 200,
+              height: 200
             }}
+            resizeMethod='auto'
+            resizeMode='cover'
           >
             <View
               style={styles.container}
@@ -33,39 +40,52 @@ export default class Card extends Component {
             </View>
           </ImageBackground>
         </View>
-        {/* Titulo */}
 
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleContent}>
-            Sit fugiat non culpa
+        <View
+          style={{
+            backgroundColor: '#FFF',
+            paddingBottom: 50
+          }}
+        >
+
+          {/* Titulo */}
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleContent}>
+              Sit fugiat non culpa
           </Text>
-        </View>
+          </View>
 
-        {/* Corpo do Comunicado */}
-        <View style={styles.bodyContainer}>
-          <Text style={styles.bodyContent}>
-            Cillum ex eiusmod nulla Lorem in. Sit tempor exercitation excepteur occaecat laboris pariatur velit consectetur labore est culpa Lorem. Ut culpa dolore ad nisi laborum. Duis dolore id eiusmod in eiusmod non. Id consectetur sit sit et pariatur consequat dolore non laborum reprehenderit. Ad in consequat non officia. Magna amet veniam ea dolor labore.
+          {/* Corpo do Comunicado */}
+          <View style={styles.bodyContainer}>
+            <Text style={styles.bodyContent}>
+              Cillum ex eiusmod nulla Lorem in. Sit tempor exercitation excepteur occaecat laboris pariatur velit consectetur labore est culpa Lorem. Ut culpa dolore ad nisi laborum. Duis dolore id eiusmod in eiusmod non. Id consectetur sit sit et pariatur consequat dolore non laborum reprehenderit. Ad in consequat non officia. Magna amet veniam ea dolor labore.
           </Text>
-        </View>
+          </View>
 
-        {/* Vídeo do YT */}
-        <View style={styles.attemptsContainer}>
-          <Gallery />
-        </View>
+          {/* Anexos */}
+          <Attachments />
 
-        <View style={styles.videoContainer}>
-        <YouTube
-          videoId='Ezn00_YrXh8'
-          play={false}
-          apiKey={'wZpPI25c98z7-j7zFOLNz1U8'}
-          fullscreen={true}
-          loop={false}
-          onReady={e => this.setState({ isReady: true })}
-          style={styles.video}/>
-        </View>
+          {/* Galeria de Fotos */}
+          <View style={styles.attemptsContainer}>
+            <Gallery />
+          </View>
 
-        <View style={styles.senderContainer}>
-          <Text>SmartBaby, 27/04/2020</Text>
+          {/* Vídeos */}
+          <View style={styles.videoContainer}>
+            <YouTube
+              videoId='Ezn00_YrXh8'
+              play={false}
+              apiKey={'wZpPI25c98z7-j7zFOLNz1U8'}
+              fullscreen={true}
+              loop={false}
+              onReady={e => this.setState({ isReady: true })}
+              style={styles.video} />
+          </View>
+
+          {/* Remetente */}
+          <View style={styles.senderContainer}>
+            <Text>SmartBaby, 27/04/2020</Text>
+          </View>
         </View>
       </ScrollView>
     );

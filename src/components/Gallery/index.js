@@ -71,7 +71,7 @@ export default class Gallery extends Component {
             style={{
               padding: 10,
               fontSize: 16,
-              fontWeight: '600'
+              fontWeight: '500'
             }}>
             Imagens
           </Text>
