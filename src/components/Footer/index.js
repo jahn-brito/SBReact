@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
 
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import Modal from 'react-native-modal';
+import Notifications from '../../screens/Notifications';
 import Icon from 'react-native-vector-icons/FontAwesome';
 Icon.loadFont();
 
 // import { Container } from './styles';
 
 export default class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity>
-          <Icon name="home" size={25}/>
+          <Icon name="home" size={25} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Icon name="comment-o" size={25}/>
+          <Icon name="comment-o" size={25} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.setState({ modalVisible: !this.state.modalVisible })}
+        >
+          <Icon name="bell-o" size={25} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Icon name="bell-o" size={25}/>
+          <Icon name="star-o" size={25} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Icon name="star-o" size={25}/>
+          <Icon name="plus" size={25} />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="plus" size={25}/>
-        </TouchableOpacity>
+        <Modal style={styles.modal} isVisible={this.state.modalVisible} onBackdropPress={() => this.setState({ modalVisible: !this.state.modalVisible })}>
+          <Notifications />
+        </Modal>
       </View>
     );
   }
@@ -44,5 +57,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 2,
+  },
+  modal: {
+    alignItems: undefined,
+    justifyContent: undefined,
+    backgroundColor: '#FFF',
+    margin: 0,
+    marginTop: 100,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20
   }
 });
