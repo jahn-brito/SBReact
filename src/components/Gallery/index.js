@@ -22,7 +22,7 @@ export default class Gallery extends Component {
 
   componentDidMount(){
     var that = this;
-    let items = Array.apply(null, Array(8)).map((v, i) => {
+    let items = Array.apply(null, Array(22)).map((v, i) => {
       return { id: i, src: 'https://unsplash.it/400/400?image=' + (i + 10)};
     });
 

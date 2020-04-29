@@ -26,7 +26,7 @@ const styles = StyleSheet.create ({
     flex: 5
   },
   text: {
-    fontWeight: '500'
+    fontWeight: '400'
   },
   containerHour: {
     flex: 1

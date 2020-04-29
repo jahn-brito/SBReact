@@ -2,7 +2,7 @@ import { Platform, Dimensions } from 'react-native'
 
 const styles = {
   container: {
-    height: 80,
+    height: 90,
     margin: 0,
     paddingTop: 40,
     paddingBottom: 10,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 
@@ -12,7 +12,7 @@ export default class Header extends Component {
       <View style={header.container}>
         <View style={header.rowContainer} >
           <TouchableOpacity>
-            <Icon name="navicon" style={header.buttons} size={20} color="white" />
+            <Icon name="align-left" style={header.buttons} size={20} color="white" />
           </TouchableOpacity>
           <View style={header.rowActions}>
             <TouchableOpacity>

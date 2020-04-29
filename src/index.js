@@ -38,7 +38,8 @@ export default class App extends Component {
         <ScrollView>
         <Text style={{
           alignSelf: 'center',
-          fontWeight: '600'
+          fontWeight: '500',
+          color: '#2A7EF0'
         }}>
           {moment().format('LL')}
         </Text>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     paddingVertical: 10,
     fontSize: 16,
-    fontWeight: '500'
+    fontWeight: '400'
   },
   modal: {
     alignItems: undefined,
