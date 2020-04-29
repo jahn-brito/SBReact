@@ -1,16 +1,19 @@
 import { Platform, Dimensions, StyleSheet } from 'react-native'
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     height: 150,
     borderRadius: 10,
-    margin: 5,
+    margin: 10,
     padding: 10,
     backgroundColor: '#FFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 1,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 6.68,
     elevation: 1,
   },
   rowHeader: {

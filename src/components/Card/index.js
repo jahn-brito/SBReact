@@ -13,11 +13,7 @@ export default class Card extends Component {
   render() {
     return (
       <ScrollView >
-        <View
-          style={{
-            height: 200,
-          }}
-        >
+        <View style={{ height: 200 }}>
           <ImageBackground
             source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }}
             style={{
