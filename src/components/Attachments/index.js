@@ -6,8 +6,8 @@ Icon.loadFont();
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
-    marginHorizontal: 5
+    paddingHorizontal: 5,
+    backgroundColor: '#FFF'
   }
 });
 
@@ -95,7 +95,7 @@ export default class Attachments extends Component {
       <SafeAreaView style={styles.container}>
         <Text
           style={{
-            padding: 10,
+            padding: 5,
             fontSize: 16,
             fontWeight: '500'
           }}>

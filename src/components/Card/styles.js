@@ -5,7 +5,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: 'center',
-    margin: 10,
+    position: "absolute",
+    top: 10,
+    paddingHorizontal: 10,
+    zIndex: 1,
+    width: '100%'
   },
   titleContainer:{
     margin: 10,

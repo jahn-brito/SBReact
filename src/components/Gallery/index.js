@@ -107,7 +107,7 @@ export default class Gallery extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
+    backgroundColor: '#FFF'
   },
   image: {
     height: 120,

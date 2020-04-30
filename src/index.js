@@ -16,6 +16,9 @@ import CardItem from "./components/CardItem"
 import Student from "./components/Student"
 import Card from "./components/Card"
 import Footer from './components/Footer';
+import ModalView from './components/ModalView';
+import Gallery from './components/Gallery';
+import Attachments from './components/Attachments';
 
 YellowBox.ignoreWarnings([
   'VirtualizedLists should never be nested', // TODO: Remove when fixed
@@ -51,13 +54,14 @@ export default class App extends Component {
           <CardItem toogle={this.toggleModal}></CardItem>
           <CardItem toogle={this.toggleModal}></CardItem>
           <CardItem toogle={this.toggleModal}></CardItem>
-          <Modal
-            isVisible={this.state.isModalVisible}
-            style={styles.modal}
-            propagateSwipe
-          >
-            <Card modalVisible={this.state.isModalVisible} toogle={this.toggleModal}></Card>
-          </Modal>
+            <ModalView
+              visible={this.state.isModalVisible}
+              toogle={this.toggleModal}
+              // headerImageSource='https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg'
+            >
+              <Attachments/>
+              <Gallery/>
+            </ModalView>
         </ScrollView>
         <Footer />
       </Fragment>
@@ -72,12 +76,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400'
   },
-  modal: {
-    alignItems: undefined,
-    justifyContent: undefined,
-    backgroundColor: 'transparent',
-    margin: 0,
-    marginTop: 100,
-  }
 });
 

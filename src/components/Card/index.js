@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, ImageBackground, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
 import YouTube from 'react-native-youtube'
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
@@ -14,14 +14,6 @@ export default class Card extends Component {
     return (
       <ScrollView >
         <View style={{ height: 200 }}>
-          <ImageBackground
-            source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }}
-            style={{
-              height: 200
-            }}
-            resizeMethod='auto'
-            resizeMode='cover'
-          >
             <View
               style={styles.container}
             >
@@ -30,11 +22,21 @@ export default class Card extends Component {
               >
                 <Icon name="angle-down" color="white" size={25} />
               </TouchableOpacity>
+              <Text>In voluptate consectetur</Text>
               <TouchableOpacity>
                 <Icon name="star-o" color="white" size={25} />
               </TouchableOpacity>
             </View>
-          </ImageBackground>
+          <Image
+            source={{ uri: 'https://mega.ibxk.com.br//2019/10/02/02143002377157.jpg' }}
+            style={{
+              height: 200,
+              borderRadius: 10
+            }}
+            resizeMethod='auto'
+            resizeMode='cover'
+          >
+          </Image>
         </View>
 
         <View
