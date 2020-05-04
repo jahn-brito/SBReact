@@ -7,7 +7,7 @@ export const Container = styled.View`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: ${props => props.height};
+  top: ${props => props.height+'px'};
   padding: 0px 10px;
   width: 100%;
 `;
@@ -26,6 +26,6 @@ export const Title = styled.Text`
 
 export const ImageHeader = styled.Image`
   height: 250px;
-  width: ${Dimensions.get('window').width};
+  width: ${Dimensions.get('window').width+'px'};
   align-self: stretch;
 `;

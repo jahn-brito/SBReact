@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react-native';
+import React from 'react';
+import { FlatList } from 'react-native';
+import { ItemContainer, Avatar, ContentContainer, Title, Body } from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 Icon.loadFont();
-
-// import { Container } from './styles';
 
 const DATA = [
   {
@@ -12,7 +10,7 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/smart@adorable.io',
     date: 'png'
   },
   {
@@ -20,7 +18,7 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/sm@adorable.io',
     date: 'png'
   },
   {
@@ -28,7 +26,7 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/smartbaby@adorable.io',
     date: 'png'
   },
   {
@@ -36,15 +34,15 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/smartcare@adorable.io',
     date: 'png'
   },
   {
     id: '5',
     title: 'Novo Comunicado',
-    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
+    body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/five@adorable.io',
     date: 'png'
   },
   {
@@ -52,7 +50,7 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/six@adorable.io',
     date: 'png'
   },
   {
@@ -60,7 +58,7 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/seven@adorable.io',
     date: 'png'
   },
   {
@@ -68,150 +66,29 @@ const DATA = [
     title: 'Novo Comunicado',
     body: 'Tem um novo comunicado que você precisa ver.',
     author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '9',
-    title: 'Novo Comunicado',
-    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '10',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '11',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '12',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '13',
-    title: 'Novo Comunicado',
-    body: 'Ea ut aute cupidatat nostrud aute Lorem minim quis esse commodo. Pariatur ex qui mollit tempor dolor esse amet duis minim duis in aute est. Aute reprehenderit ipsum elit ea enim.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '14',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '15',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
-    date: 'png'
-  },
-  {
-    id: '16',
-    title: 'Novo Comunicado',
-    body: 'Tem um novo comunicado que você precisa ver.',
-    author: 'Jon',
-    avatar: 'https://cdn.clipart.email/a5e3051c9fb286fe2e04f831b4f4eccf_avatar-icon-transparent-png-clipart-free-download-ywd_512-512.png',
+    avatar: 'https://api.adorable.io/avatars/50/eight@adorable.io',
     date: 'png'
   },
 ]
 
-export default class Notifications extends Component {
-  render() {
-
-    function Item({ item }) {
-      return (
-        <View
-          style={{
-            flexDirection: 'row',
-            flex: 1,
-            borderColor: '#3F51B5',
-            borderBottomWidth: 1,
-            borderRadius: 5,
-            paddingVertical: 20,
-            paddingHorizontal: 10,
-            marginVertical: 5,
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}
-        >
-          <View
-            style={{
-              flexDirection: 'row',
-              // alignItems: "center",
-              paddingHorizontal: 5
-            }}
-          >
-            <Image source={{uri: item.avatar}} style={{width: 50, height: 50}} />
-            <View style={{marginLeft: 10}}>
-              <Text style={{fontSize: 16}}>{item.title} - 1 dia atrás</Text>
-              <Text numberOfLines={3} style={{width: 330, textAlign: "justify"}}>{item.body}</Text>
-              <Text style={{}}>De: {item.author}</Text>
-            </View>
-          </View>
-        </View>
-      );
-    }
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Notificações</Text>
-          <TouchableOpacity activeOpacity={0.5} onPress={this.props.toogle}>
-            <Icon name='angle-down' size={25} style={styles.headerIcon} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.bodyContainer}>
-        <FlatList
-          data={DATA}
-          renderItem={({ item }) => <Item item={item} />}
-          keyExtractor={item => item.id}
-        />
-        </View>
-      </View>
-    );
-  }
+function Item({ item }) {
+  return (
+    <ItemContainer>
+      <Avatar source={{ uri: item.avatar }} />
+      <ContentContainer>
+        <Title>{item.title}</Title>
+        <Body numberOfLines={2}>{item.body}</Body>
+      </ContentContainer>
+    </ItemContainer>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: '#164280',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
-  },
-  headerText: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: '600'
-  },
-  headerIcon: { opacity: 0.9, color: '#FFF' },
-  bodyContainer:{}
-});
+export default function Notifications() {
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={({ item }) => <Item item={item} />}
+      keyExtractor={item => item.id}
+    />
+  );
+}
