@@ -1,40 +1,33 @@
-import React, { Component } from 'react';
-
-import { View, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 Icon.loadFont();
 
 import header from './styles';
-import Calendar from '../Calendar';
+import Calendar from '../Calendar'
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: false
-    }
-  }
-  render() {
-    return (
-      <View style={header.container}>
-        <View style={header.rowContainer} >
+export default function Header() {
+  const [ modalVisible, setModalVisible ] = useState(false);
+
+  return (
+    <View style={header.container}>
+      <View style={header.rowContainer} >
+        <TouchableOpacity>
+          <Icon name="align-left" style={header.buttons} size={20} color="white" />
+        </TouchableOpacity>
+        <View style={header.rowActions}>
           <TouchableOpacity>
-            <Icon name="align-left" style={header.buttons} size={20} color="white" />
+            <Icon name="search" style={header.buttons} size={20} color="white" />
           </TouchableOpacity>
-          <View style={header.rowActions}>
-            <TouchableOpacity>
-              <Icon name="search" style={header.buttons} size={20} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
-              <Icon name="calendar" style={header.buttons} size={20} color="white" />
-            </TouchableOpacity>
-            <Modal isVisible={this.state.modalVisible} onBackdropPress={() => this.setState({modalVisible: !this.state.modalVisible})}>
-              <Calendar />
-            </Modal>
-          </View>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+            <Icon name="calendar" style={header.buttons} size={20} color="white" />
+          </TouchableOpacity>
+          <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)}>
+            <Calendar />
+          </Modal>
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }

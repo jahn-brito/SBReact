@@ -1,53 +1,46 @@
-import { Platform, Dimensions, StyleSheet } from 'react-native'
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    height: 150,
-    borderRadius: 10,
-    margin: 10,
-    padding: 10,
-    backgroundColor: '#FFF',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.20,
-    shadowRadius: 6.68,
-    elevation: 1,
-  },
-  rowHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  containerAvatar: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  containerText: {
-    flex: 5
-  },
-  text: {
-    fontWeight: '400'
-  },
-  containerHour: {
-    flex: 1
-  },
-  rowContent: {
-    marginVertical: 10
-  },
-  rowFooter: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-  },
-  footerContent: {
-    marginHorizontal: 5
-  },
-  contentText: {
-    textAlign: 'justify'
-  }
-});
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7
+})`
+  width: 94%;
+  margin: 3%;
+  border-radius: 14px;
+  background-color: #FFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+`;
 
-export default styles
+export const Cover = styled.View`
+  height: 180px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
+`;
+
+export const Image = styled.Image`
+  width: 100%;
+  height: 180px;
+`;
+
+export const Title = styled.Text`
+  font-size: 18px;
+  margin-left: 20px;
+  margin-top: 5px;
+  font-weight: 500;
+  color: #000;
+  width: 300px;
+`;
+
+export const Author = styled.Text`
+  font-size: 16px;
+  margin-left: 20px;
+  line-height: 24px;
+  color: #3c4560;
+`;
+
+export const Text = styled.Text`
+  font-size: 17px;
+  margin: 20px;
+  line-height: 24px;
+  color: #3c4560;
+`;
