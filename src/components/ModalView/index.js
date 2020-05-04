@@ -1,108 +1,48 @@
-import React, { Component } from 'react';
-
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  ScrollView,
-  TouchableOpacity
-} from 'react-native';
+import React from 'react';
+import { Platform, TouchableOpacity, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
-import Modal from 'react-native-modal'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import HeaderImageScrollView from 'react-native-image-header-scroll-view'
+import { Modal, Container, ImageHeader, Title } from './styles'
 Icon.loadFont();
 
-export default class ModalView extends Component {
-  constructor(props) {
-    super(props);
-  }
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+const IS_IPHONE_X = SCREEN_HEIGHT === 812 || SCREEN_HEIGHT === 896;
+const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 44 : 20) : 0;
+const HEADER_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 88 : 64) : 64;
+const NAV_BAR_HEIGHT = HEADER_HEIGHT - STATUS_BAR_HEIGHT;
 
-  render() {
-    return (
-      <Modal
-        isVisible={this.props.visible}
-        style={styles.modal}
+export default function ModalView(props) {
+  return (
+    <Modal isVisible={props.visible}>
+      <HeaderImageScrollView
+        maxHeight={250}
+        minHeight={HEADER_HEIGHT}
+        renderHeader={() => <ImageHeader resizeMode="cover" source={{ uri: props.headerImageSource }} />}
+        minOverlayOpacity={0.2}
+        maxOverlayOpacity={0.6}
+        bounces={false}
+        renderFixedForeground={() => (
+          <Container height={NAV_BAR_HEIGHT}>
+            <TouchableOpacity onPress={() => props.toogle()}>
+              <Icon name="angle-down" color="white" size={25} />
+            </TouchableOpacity>
+            <Title>{props.title}</Title>
+            <TouchableOpacity>
+              <Icon name="star-o" color="white" size={25} />
+            </TouchableOpacity>
+          </Container>
+        )}
       >
-        {
-          this.props.headerImageSource ?
-            <View style={{ height: 45 }}>
-              <View style={styles.container}>
-                <TouchableOpacity onPress={() => this.props.toogle()}>
-                  <Icon name="angle-down" color="white" size={25} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="star-o" color="white" size={25} />
-                </TouchableOpacity>
-              </View>
-              <Image
-                source={{ uri: this.props.headerImageSource }}
-                style={{
-                  height: 45,
-                  borderTopLeftRadius: 10,
-                  borderTopRightRadius: 10
-                }}
-                resizeMethod='auto'
-                resizeMode='cover'
-              />
-            </View>
-            : <View style={styles.headerContainer}>
-                <Text style={styles.headerText}>Notificações</Text>
-                <TouchableOpacity activeOpacity={0.5} onPress={this.props.toogle}>
-                  <Icon name='angle-down' size={25} style={styles.headerIcon} />
-                </TouchableOpacity>
-              </View>
-        }
-        <ScrollView style={styles.fill}>
-          {this.props.children}
-        </ScrollView>
-      </Modal>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  fill: {
-    flex: 1,
-  },
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: 'center',
-    position: "absolute",
-    top: 10,
-    paddingHorizontal: 10,
-    zIndex: 1,
-    width: '100%'
-  },
-  modal: {
-    alignItems: undefined,
-    justifyContent: undefined,
-    backgroundColor: 'transparent',
-    margin: 0,
-    marginTop: 100,
-    borderRadius: 10
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: '#164280',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
-  },
-  headerText: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: '600'
-  },
-  headerIcon: { opacity: 0.9, color: '#FFF' },
-});
+        {props.children}
+      </HeaderImageScrollView>
+    </Modal>
+  )
+};
 
 ModalView.PropTypes = {
   visible: PropTypes.any.isRequired,
-  // children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
   headerImageSource: PropTypes.string,
   headerColor: PropTypes.string
 }
