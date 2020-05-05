@@ -22,6 +22,11 @@ export const Image = styled.Image`
   height: 180px;
 `;
 
+export const HeaderContainer = styled.View`
+  flex-direction: row;
+  padding: 20px;
+`;
+
 export const Title = styled.Text`
   font-size: 18px;
   margin-left: 20px;
@@ -40,7 +45,15 @@ export const Author = styled.Text`
 
 export const Text = styled.Text`
   font-size: 17px;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   line-height: 24px;
   color: #3c4560;
+`;
+
+export const Avatar = styled.Image`
+width: 50px;
+height: 50px;
+border-radius: 50px;
 `;
