@@ -4,7 +4,7 @@ const styles = StyleSheet.create ({
   rowHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 20,
     flex: 1,
     maxWidth: 200,
     minHeight: 50

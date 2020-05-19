@@ -1,11 +1,9 @@
-import { Platform, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
-    height: 90,
-    margin: 0,
-    paddingTop: 40,
-    paddingBottom: 10,
+    height: 70,
+    paddingTop: 30,
     backgroundColor: '#2A7EF0',
     borderBottomWidth: 1,
     borderColor: '#BBBBBB'
@@ -29,6 +27,6 @@ const styles = {
     width: Dimensions.get('window').width <= 400 ? 145 : 155,
     resizeMode: 'contain'
   }
-}
+})
 
 export default styles

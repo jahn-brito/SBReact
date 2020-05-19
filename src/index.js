@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import {
   StyleSheet,
-  ScrollView,
+  View,
   Text,
   StatusBar,
-  YellowBox
+  YellowBox,
 } from 'react-native';
 import Swiper from 'react-native-swiper'
 import moment from 'moment'
@@ -19,6 +19,8 @@ import Footer from './components/Footer';
 import ModalView from './components/ModalView';
 import Gallery from './components/Gallery';
 import Attachments from './components/Attachments';
+import { CollapsibleHeaderScrollView } from 'react-native-collapsible-header-views';
+import Video from './components/Video';
 
 YellowBox.ignoreWarnings([
   'VirtualizedLists should never be nested', // TODO: Remove when fixed
@@ -37,67 +39,84 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
-        <StatusBar barStyle="light-content" />
-        <Header></Header>
-        <Swiper showsPagination={false}>
-          <Fragment>
-            <Student
-              name='Jon Doe'
-              class='Maternal'
-              year='2018'
-              avatar='https://st3.depositphotos.com/3037725/14198/v/1600/depositphotos_141982124-stock-illustration-faces-avatar-in-circle-portrait.jpg'
-            />
-            <ScrollView>
-              <Text style={{
-                alignSelf: 'center',
-                fontWeight: '500',
-                color: '#2A7EF0'
-              }}>
-                {moment().format('LL')}
-              </Text>
-              <Text style={styles.title}>Comunicados</Text>
-              <CardItem
-                image={{uri: IMAGE}}
-                title='Comunicado Importante'
-                author='Mundo Encantado'
-                text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
-                toogle={this.toggleModal}>
-              </CardItem>
-              <CardItem
-                image={{uri: IMAGE}}
-                title='Comunicado Importante'
-                author='Mundo Encantado'
-                text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
-                toogle={this.toggleModal}>
-              </CardItem>
-              <Text style={styles.title}>Tarefas</Text>
-              <CardItem
-                image={{uri: IMAGE}}
-                title='Comunicado Importante'
-                author='Mundo Encantado'
-                text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
-                toogle={this.toggleModal}>
-              </CardItem>
-              <CardItem
-                image={{uri: IMAGE}}
-                title='Comunicado Importante'
-                author='Mundo Encantado'
-                text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
-                toogle={this.toggleModal}>
-              </CardItem>
-              <ModalView
-                visible={this.state.isModalVisible}
-                toogle={this.toggleModal}
-                title='Comunicado Importante'
-                headerImageSource={IMAGE}
+        <StatusBar showHideTransition='slide' barStyle="dark-content" />
+        <CollapsibleHeaderScrollView
+          CollapsibleHeaderComponent={
+            <View>
+              <Header />
+              <Student
+                name='Jon Doe'
+                class='Maternal'
+                year='2018'
+                avatar='https://st3.depositphotos.com/3037725/14198/v/1600/depositphotos_141982124-stock-illustration-faces-avatar-in-circle-portrait.jpg'
+              />
+              <View
+                style={{
+                  backgroundColor: '#FFF',
+                  height: 35,
+                }}
               >
-                <Attachments />
-                <Gallery />
-              </ModalView>
-            </ScrollView>
-          </Fragment>
+                <Text style={{
+                  alignSelf: 'center',
+                  fontWeight: '500',
+                  color: '#2A7EF0',
+                }}>
+                  {moment().format('LL')}
+                </Text>
+              </View>
+            </View>
+          }
+          headerHeight={160}
+        // headerContainerBackgroundColor='#2A7EF0'
+        // statusBarHeight={Platform.OS === 'ios' ? 20 : 0}
+        >
+          {/* <Swiper showsPagination={false}> */}
+          <View style={{marginTop: 30}}>
+            <Text style={styles.title}>Comunicados</Text>
+            <CardItem
+              image={{ uri: IMAGE }}
+              title='Comunicado Importante'
+              author='Mundo Encantado'
+              text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
+              toogle={this.toggleModal}
+              avatar='https://api.adorable.io/avatars/50/mundo@adorable.io'>
+            </CardItem>
+            <CardItem
+              image={{ uri: IMAGE }}
+              title='Comunicado Importante'
+              author='Mundo Encantado'
+              text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
+              toogle={this.toggleModal}>
+            </CardItem>
+            <Text style={styles.title}>Tarefas</Text>
+            <CardItem
+              image={{ uri: IMAGE }}
+              title='Comunicado Importante'
+              author='Mundo Encantado'
+              text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
+              toogle={this.toggleModal}>
+            </CardItem>
+            <CardItem
+              image={{ uri: IMAGE }}
+              title='Comunicado Importante'
+              author='Mundo Encantado'
+              text='Pariatur nisi nulla ullamco enim velit in officia amet officia deserunt cupidatat ut exercitation.'
+              toogle={this.toggleModal}>
+            </CardItem>
+            <ModalView
+              visible={this.state.isModalVisible}
+              toogle={this.toggleModal}
+              title='Comunicado Importante'
+            // headerImageSource={IMAGE}
+            >
+              <Attachments />
+              <Gallery />
+              <Video />
+            </ModalView>
+            {/* </Swiper> */}
+          </View>
 
-        </Swiper>
+        </CollapsibleHeaderScrollView>
         <Footer />
       </Fragment>
     )
