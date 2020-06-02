@@ -12,12 +12,12 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2B80C64FB5B6EA9457370DDA /* libPods-SBReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0088F027FC91574AD26F8506 /* libPods-SBReact.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SBReactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SBReactTests.m */; };
 		3F511568F394F5687499091F /* libPods-SBReact-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE86987B4FB88B15D7D65144 /* libPods-SBReact-tvOSTests.a */; };
-		61B5F7F0F452942D8EE35062 /* libPods-SBReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0088F027FC91574AD26F8506 /* libPods-SBReact.a */; };
 		74508793D0735F708049DFE3 /* libPods-SBReact-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA2815D9CB527E3C3793C6C /* libPods-SBReact-tvOS.a */; };
 		8B9236A6D0D22224BB6F68C3 /* libPods-SBReact-SBReactTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9264E40E187AB3F81A4FF3A8 /* libPods-SBReact-SBReactTests.a */; };
 /* End PBXBuildFile section */
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61B5F7F0F452942D8EE35062 /* libPods-SBReact.a in Frameworks */,
+				2B80C64FB5B6EA9457370DDA /* libPods-SBReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,6 @@
 			children = (
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		526CFCCAAF42DF463C3E658F /* Pods */ = {
@@ -169,7 +168,6 @@
 				9E90A93EFC0EB6F41A0D40F2 /* Pods-SBReact-tvOSTests.debug.xcconfig */,
 				ED92E7CECCE28F59A738101F /* Pods-SBReact-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -303,6 +301,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 8FR9HB584B;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -741,7 +740,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_BITCODE = NO;
+				DEVELOPMENT_TEAM = 8FR9HB584B;
+				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
@@ -768,6 +768,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FR9HB584B;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SBReact/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
